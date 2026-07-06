@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "connection_cutter"
+version = "0.5.0"
+name = "Connection Cutter"
+tagline = "Cut and join mesh objects with printable connectors"
+maintainer = "clonephaze"
+type = "add-on"
+
+tags = ["Mesh", "Modeling"]
+
+blender_version_min = "4.5.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
