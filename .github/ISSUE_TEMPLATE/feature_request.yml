@@ -1,0 +1,60 @@
+name: Feature Request
+description: Suggest a new capability or improvement for Connection Cutter
+assignees: [Clonephaze]
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The more concrete and specific this is, the easier it is to actually design and build. "It would be nice if it was smarter" is much harder to act on than a specific scenario that doesn't work well today.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area does this relate to?
+      options:
+        - Cutting (Custom Plane / Line Cut / Freeform / Edge Loop)
+        - Connectors (placement, shapes, auto-distribute)
+        - Cap Strategy / hole-filling
+        - Sidebar panel / UI / workflow
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you running into, or what's missing?
+      description: Describe the actual situation that prompted this request - a specific mesh, workflow, or limitation you hit, not just the abstract idea
+      placeholder: e.g. When cutting a character with long hair, I always have to retry a few times because the hair keeps getting swept into the wrong piece
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: What would you like to happen instead?
+      description: Your best guess at how this could work - it doesn't need to be a fully-designed solution, just a starting point
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or workarounds you've tried
+      description: Anything you've already tried (a different cut mode, a manual workaround, a setting) and how well it did or didn't work
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Screenshots, reference images, links to similar tools/addons that do something like this well, etc. - drag and drop files directly into this box.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this hasn't already been requested
+          required: true

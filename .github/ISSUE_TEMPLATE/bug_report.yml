@@ -1,0 +1,132 @@
+name: Bug Report
+description: Something isn't working right - a cut fails, produces bad geometry, or Blender errors out
+assignees: [Clonephaze]
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue! The more information you can give, the faster this can actually get fixed instead of guessed at.
+  - type: input
+    id: addon-version
+    attributes:
+      label: Connection Cutter version
+      description: Preferences > Get Extensions/Add-ons > Connection Cutter
+      placeholder: e.g. 0.5.0
+    validations:
+      required: true
+
+  - type: input
+    id: blender-version
+    attributes:
+      label: Blender version
+      description: Top-left Blender menu > About Blender, or Help > About Blender
+      placeholder: e.g. 4.5.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cut-mode
+    attributes:
+      label: Which cut mode were you using?
+      description: If the bug isn't about cutting at all (e.g. it's about Connectors or the panel UI), pick "Not applicable"
+      options:
+        - Custom Plane
+        - Line Cut
+        - Freeform
+        - Edge Loop (Loop Bisect / Insert Loop / Cut Along Selected Loop)
+        - Connectors
+        - Not applicable / not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: cap-strategy
+    attributes:
+      label: Cap Strategy setting
+      description: Top of the sidebar panel, only relevant if this is a cutting issue
+      options:
+        - Auto
+        - Grid Fill
+        - Single Face
+        - Triangle Fan
+        - Even Triangulation
+        - Not applicable / not sure
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Be as specific as possible - "the cut failed" vs. "it rejected with X message" vs. "it produced a hole/crack/extra piece" are all very different bugs
+      placeholder: e.g. Cutting along a line near the character's collar produced a visible crack across the face on the opposite side that was never touched
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: Steps to reproduce
+      description: Exact sequence of clicks/drags/settings, in order. If it only happens on a specific mesh, say so (and attach it below if you're able to share it).
+      placeholder: |
+        1. Select the character mesh
+        2. Switch to Line Cut mode
+        3. Drag a line straight across the neck
+        4. Click Cut
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug-log
+    attributes:
+      label: Debug log output
+      description: >
+        This is the single most useful thing you can include. Check the "Debug Logging" box
+        at the top of the sidebar panel (or launch Blender with the --debug flag), open the
+        System Console (Window > Toggle System Console on Windows), retry the action, then
+        paste everything printed there - lines starting with "[Connection Cutter]" and any
+        Python traceback/error text.
+      render: shell
+
+  - type: checkboxes
+    id: mesh-characteristics
+    attributes:
+      label: Does the mesh involved have any of the following? (check all that apply)
+      description: These are known to interact with cutting/booleans in ways that matter
+      options:
+        - label: Shape keys
+        - label: Modifiers (Subdivision Surface, Mirror, Solidify, etc.)
+        - label: Multiple objects selected/cut at once
+        - label: Non-manifold, very dense/triangulated, or otherwise "messy" topology
+        - label: Not sure / none of the above
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or screen recording
+      description: Drag and drop images/video directly into this box. A viewport screenshot showing where you cut (and, if relevant, where the bad geometry ended up) helps a lot.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Anything else worth knowing - a link to the mesh/asset if you're able to share it, whether this used to work in an older version, etc.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this hasn't already been reported
+          required: true
+        - label: I'm using the latest released version of Connection Cutter
+          required: true
